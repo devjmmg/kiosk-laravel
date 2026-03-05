@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,46 +13,44 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->insert([
-            'nombre' => 'Café',
-            'icono' => 'cafe',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $categories = [
+            [
+                'id' => 1,
+                'icono' => 'cafe',
+                'nombre' => 'Café'
+            ],
+            [
+                'id' => 2,
+                'icono' => 'hamburguesa',
+                'nombre' => 'Hamburguesas'
+            ],
+            [
+                'id' => 3,
+                'icono' => 'hotdog',
+                'nombre' => 'Hot dog'
+            ],
+            [
+                'id' => 4,
+                'icono' => 'pizza',
+                'nombre' => 'Pizzas'
+            ],
+            [
+                'id' => 5,
+                'icono' => 'dona',
+                'nombre' => 'Donas'
+            ],
+            [
+                'id' => 6,
+                'icono' => 'pastel',
+                'nombre' => 'Pasteles'
+            ],
+            [
+                'id' => 7,
+                'icono' => 'galletas',
+                'nombre' => 'Galletas'
+            ]
+        ];
 
-        DB::table('categories')->insert([
-            'nombre' => 'Hamburguesas',
-            'icono' => 'hamburguesa',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('categories')->insert([
-            'nombre' => 'Pizzas',
-            'icono' => 'pizza',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('categories')->insert([
-            'nombre' => 'Donas',
-            'icono' => 'dona',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('categories')->insert([
-            'nombre' => 'Pasteles',
-            'icono' => 'pastel',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('categories')->insert([
-            'nombre' => 'Galletas',
-            'icono' => 'galletas',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        Category::insert($categories);
     }
 }
