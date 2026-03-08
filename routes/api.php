@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -11,3 +12,7 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('/categories', CategoryController::class);
 Route::apiResource('/products', ProductController::class);
+
+Route::post('/register',[AuthController::class, 'register'])->name('register');
+Route::post('/login',[AuthController::class, 'login'])->name('login');
+Route::post('/logout',[AuthController::class, 'logout'])->middleware('auth:sanctum')->name('logout');
