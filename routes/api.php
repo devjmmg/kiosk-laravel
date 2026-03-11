@@ -11,8 +11,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('/categories', CategoryController::class);
-Route::apiResource('/products', ProductController::class);
+Route::apiResource('/category', CategoryController::class)->middleware('auth:sanctum');
+Route::apiResource('/product', ProductController::class)->middleware('auth:sanctum');
 
 Route::post('/register',[AuthController::class, 'register'])->name('register');
 Route::post('/login',[AuthController::class, 'login'])->name('login');

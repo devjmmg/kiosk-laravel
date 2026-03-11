@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         //return response()->json(Product::all());
-        return new ProductCollection(Product::where('disponible', 1)->orderBy('nombre', 'ASC')->get());
+        return new ProductCollection(Product::orderBy('nombre', 'ASC')->get());
     }
 
     /**
@@ -54,7 +54,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->disponible = !$product->disponible;
+        $product->save();
+        return response()->json($product->nombre);
     }
 
     /**
